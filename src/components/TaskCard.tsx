@@ -35,14 +35,14 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onDelete, onComplete }) => {
   <div className="mt-6 flex justify-between items-center">
   <Link
   href={`/EditTask/${task.id}`}
-  className={`bg-yellow-500 text-white px-6 py-3 rounded-lg text-lg ${task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''}`}
+  className={`bg-yellow-500 text-white sm:px-4 sm:py-2 px-6 py-3 rounded-lg text-lg ${task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''}`}
 >
   Edit
 </Link>
 
 <button
   onClick={() => onDelete(task.id)}
-  className={`bg-red-500 text-white px-6 py-3 rounded-lg text-lg ${task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''}`}
+  className={`bg-red-500 text-white sm:px-4 sm:py-2 px-6 py-3 rounded-lg text-lg ${task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''}`}
   disabled={task.status === 'COMPLETED'}
 >
   Delete
@@ -53,7 +53,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onDelete, onComplete }) => {
     {task.status !== 'COMPLETED' && (
       <button
         onClick={() => onComplete(task.id)}
-        className="bg-green-500 text-white px-6 py-3 rounded-lg text-lg"
+        className="bg-green-500 text-white sm:px-4 sm:py-2 px-6 py-3 rounded-lg text-lg"
       >
         Complete
       </button>
