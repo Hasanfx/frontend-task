@@ -13,57 +13,58 @@ interface TaskCardProps {
   onComplete: (id: string) => void;
 }
 
-
 const TaskCard: React.FC<TaskCardProps> = ({ task, onDelete, onComplete }) => {
   return (
-    
-<div className={`bg-white p-6 rounded-lg shadow-xl w-full max-w-full mx-auto ${task.status === 'COMPLETED' ? 'bg-gray-200 text-gray-500 cursor-not-allowed'  : ''}`}>
-
-  <span
-        className={`inline-block px-3 py-1 text-sm font-medium  text-black rounded-full ${priorityColor[task.priority]} mb-5`}
+    <div
+      className={`bg-white p-6 rounded-lg shadow-xl w-full max-w-full mx-auto ${
+        task.status === 'COMPLETED' ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : ''
+      }`}
+    >
+      <span
+        className={`inline-block px-3 py-1 text-sm font-medium text-black rounded-full ${priorityColor[task.priority]} mb-5`}
       >
         {task.priority} Priority
       </span>
       <span
-        className={`inline-block px-3 py-1 text-sm font-medium  text-black rounded-full bg-blue-300 ml-3`}
+        className={`inline-block px-3 py-1 text-sm font-medium text-black rounded-full bg-blue-300 ml-3`}
       >
-         Due Date:{task.dueDate ? new Date(task.dueDate).toLocaleDateString('en-GB') : 'Not Specified'}
-
+        Due Date:{' '}
+        {task.dueDate ? new Date(task.dueDate).toLocaleDateString('en-GB') : 'Not Specified'}
       </span>
-  <h3 className="font-bold text-2xl text-black truncate">{task.title}</h3>
-  <p className="text-lg text-black mt-2 truncate">{task.description}</p>
-  <div className="mt-6 flex justify-between items-center">
-  <Link
-  href={`/EditTask/${task.id}`}
-  className={`bg-yellow-500 text-white sm:px-4 sm:py-2 px-6 py-3 rounded-lg text-lg ${task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''}`}
->
-  Edit
-</Link>
+      <h3 className="font-bold text-2xl text-black truncate">{task.title}</h3>
+      <p className="text-lg text-black mt-2 truncate">{task.description}</p>
 
-<button
-  onClick={() => onDelete(task.id)}
-  className={`bg-red-500 text-white sm:px-4 sm:py-2 px-6 py-3 rounded-lg text-lg ${task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''}`}
-  disabled={task.status === 'COMPLETED'}
->
-  Delete
-</button>
-    
+      <div className="mt-6 flex justify-between items-center">
+        <Link
+          href={`/EditTask/${task.id}`}
+          className={`bg-yellow-500 text-white px-6 py-3 rounded-lg text-lg ${
+            task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''
+          }`}
+        >
+          Edit
+        </Link>
 
-    {/* Conditionally render the Complete button */}
-    {task.status !== 'COMPLETED' && (
-      <button
-        onClick={() => onComplete(task.id)}
-        className="bg-green-500 text-white sm:px-4 sm:py-2 px-6 py-3 rounded-lg text-lg"
-      >
-        Complete
-      </button>
-      
-    )}
-    
-  </div>
-</div>
+        <button
+          onClick={() => onDelete(task.id)}
+          className={`bg-red-500 text-white px-6 py-3 rounded-lg text-lg ${
+            task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''
+          }`}
+          disabled={task.status === 'COMPLETED'}
+        >
+          Delete
+        </button>
 
-
+        {/* Conditionally render the Complete button */}
+        {task.status !== 'COMPLETED' && (
+          <button
+            onClick={() => onComplete(task.id)}
+            className="bg-green-500 text-white px-6 py-3 rounded-lg text-lg sm:px-4 sm:py-2"
+          >
+            Complete
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 
