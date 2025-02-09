@@ -36,6 +36,7 @@ const CreateTask = () => {
         <h2 className="text-3xl font-semibold text-indigo-600 mb-6">Create Task</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
+          required
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -43,6 +44,7 @@ const CreateTask = () => {
             className="w-full p-4 border border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-black"
           />
           <textarea
+          required
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Task Description"
@@ -51,6 +53,7 @@ const CreateTask = () => {
           
           {/* Priority Dropdown */}
           <select
+          required
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
             className="w-full p-4 border border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-black"
@@ -62,11 +65,11 @@ const CreateTask = () => {
           </select>
 
           {/* Due Date field */}
-          <input
+          <input 
             type="date"
             value={dueDate || ''}
             onChange={(e) => setDueDate(e.target.value || null)} // Set dueDate to null if empty
-            className="w-full p-4 border border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-black"
+            className="w-full p-4 border border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400  text-black"
           />
           
           <button type="submit" className="w-full py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400">
