@@ -34,36 +34,36 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onDelete, onComplete }) => {
       <h3 className="font-bold text-2xl text-black truncate">{task.title}</h3>
       <p className="text-lg text-black mt-2 truncate">{task.description}</p>
 
-      <div className="mt-6 flex justify-between items-center">
-        <Link
-          href={`/EditTask/${task.id}`}
-          className={`bg-yellow-500 text-white px-6 py-3 rounded-lg text-lg ${
-            task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''
-          }`}
-        >
-          Edit
-        </Link>
+      <div className="mt-6 flex flex-wrap gap-2 justify-between items-center">
+  <Link
+    href={`/EditTask/${task.id}`}
+    className={`bg-yellow-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg text-base sm:text-lg ${
+      task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''
+    } flex-1 sm:flex-none text-center min-w-fit`}
+  >
+    Edit
+  </Link>
 
-        <button
-          onClick={() => onDelete(task.id)}
-          className={`bg-red-500 text-white px-6 py-3 rounded-lg text-lg ${
-            task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''
-          }`}
-          disabled={task.status === 'COMPLETED'}
-        >
-          Delete
-        </button>
+  <button
+    onClick={() => onDelete(task.id)}
+    className={`bg-red-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg text-base sm:text-lg ${
+      task.status === 'COMPLETED' ? 'cursor-not-allowed hidden bg-gray-500 text-gray-300' : ''
+    } flex-1 sm:flex-none text-center min-w-fit`}
+    disabled={task.status === 'COMPLETED'}
+  >
+    Delete
+  </button>
 
-        {/* Conditionally render the Complete button */}
-        {task.status !== 'COMPLETED' && (
-          <button
-            onClick={() => onComplete(task.id)}
-            className="bg-green-500 text-white px-6 py-3 rounded-lg text-lg sm:px-4 sm:py-2"
-          >
-            Complete
-          </button>
-        )}
-      </div>
+  {/* Conditionally render the Complete button */}
+  {task.status !== 'COMPLETED' && (
+    <button
+      onClick={() => onComplete(task.id)}
+      className="bg-green-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg text-base sm:text-lg flex-1 sm:flex-none text-center min-w-fit"
+    >
+      Complete
+    </button>
+  )}
+</div>
     </div>
   );
 };
